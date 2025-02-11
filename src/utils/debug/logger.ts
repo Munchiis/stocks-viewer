@@ -1,9 +1,10 @@
 const isDev = import.meta.env.DEV;
-function debounce(func, wait) {
-    let timeout;
-    return function (...args) {
+
+function debounce(func: (arg0: any) => void, wait: number | undefined) {
+    let timeout: number;
+    return function (...args: any) {
         clearTimeout(timeout);
-        timeout = setTimeout(() => func(...args), wait);
+        timeout = setTimeout(() => func.apply(null, args), wait);
     }
 }
 
@@ -22,11 +23,11 @@ export const createLogger = (enabled = true) => {
     const THROTTLE_MS = 1000;
 
     return {
-        log: (message, ...args) => console.log(`[DEBUG] ${message}`, ...args),
-        warn: (message, ...args) => console.warn(`[DEBUG] ${message}`, ...args),
-        error: (message, ...args) => console.error(`[DEBUG] ${message}`, ...args),
-        debug: (message, ...args) => console.debug(`[DEBUG] ${message}`, ...args),
-        delay: (message, ...args) => {
+        log: (message: any, ...args: any) => console.log(`[DEBUG] ${message}`, ...args),
+        warn: (message: any, ...args: any) => console.warn(`[DEBUG] ${message}`, ...args),
+        error: (message: any, ...args: any) => console.error(`[DEBUG] ${message}`, ...args),
+        debug: (message: any, ...args: any) => console.debug(`[DEBUG] ${message}`, ...args),
+        delay: (message: any, ...args: any) => {
             const currentTimestamp = Date.now();
             const lastMessageTimestamp = logMessages.get(message) || 0;
 
