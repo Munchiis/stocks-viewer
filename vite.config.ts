@@ -1,5 +1,9 @@
-import { defineConfig } from 'vite'
-
+import { defineConfig } from 'vite';
+import { nodePolyfills } from 'vite-plugin-node-polyfills';
+import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
-  // your existing config
-})
+  plugins: [
+    tailwindcss(),
+    nodePolyfills(),
+  ],
+});
