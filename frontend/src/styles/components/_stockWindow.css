@@ -1,0 +1,106 @@
+.stock-window {
+    pointer-events: auto;
+    min-width: 300px;
+}
+
+/* Make stock window elements non-interactive */
+.stock-window * {
+    pointer-events: none;
+}
+
+/* Keep header controls interactive */
+.stock-window .window-controls .control-btn {
+    pointer-events: auto;
+}
+
+.dragging {
+    opacity: 0.4;
+    transform: scale(0.95);
+    transition: all 0.2s ease;
+}
+
+.drop-zone {
+    border: 4px dashed black !important;
+    background: rgba(244, 114, 182, 0.2) !important; /* pink-200 with opacity */
+    transform: scale(1.02);
+    transition: all 0.2s ease;
+    animation: pulse 1.5s infinite;
+}
+
+.drop-zone-dry-run {
+    background: rgba(244, 114, 182, 0.1) !important;
+}
+
+@keyframes pulse {
+    0% {
+        border-color: black;
+    }
+    50% {
+        border-color: rgba(244, 114, 182, 0.8);
+    }
+    100% {
+        border-color: black;
+    }
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+    width: 100%;
+    max-width: 80rem;
+    margin: 0 auto;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1024px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        padding: 0;
+        gap: 0;
+    }
+
+    /* .stock-window {
+        width: 100%;
+        margin: 0;
+    } */
+}
+
+/* Base styles remain the same... */
+
+/* Mobile-first responsive design */
+@media screen and (max-width: 768px) {
+    .grid-container {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .stock-window {
+        width: 100%;
+        min-width: 100%;
+        margin: 0;
+    }
+
+    /* Enhance touch targets */
+    .stock-window .window-controls .control-btn {
+        min-width: 44px;
+        min-height: 44px;
+        padding: 12px;
+    }
+
+    /* Adjust spacing for touch */
+    .window-header {
+        padding: 1rem;
+    }
+
+    .chart-container {
+        padding: 1rem;
+    }
+}

@@ -1,10 +1,10 @@
 const isDev = import.meta.env.DEV;
 
-function debounce(func: (arg0: any) => void, wait: number | undefined) {
+export function debounce(func: (arg0: any) => void, wait: number | undefined) {
     let timeout: number;
     return function (...args: any) {
         clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(null, args), wait);
+        timeout = setTimeout(() => func.apply(null, args), wait) as unknown as number;
     }
 }
 

@@ -1,0 +1,32 @@
+@import 'tailwindcss';
+@import './styles/components/_homepage.css';
+@import './styles/components/_stockWindow.css';
+:root {
+    --grid-size: 2rem;
+    /* Changed to 2rem (32px) */
+    --dot-size: 3px;
+    /* Increased for better visibility at larger grid */
+    --grid-color: rgba(0, 0, 50, 0.1);
+
+    background-color: rgb(220, 220, 220);
+    background-image:
+        /* Vertical lines */
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        /* Horizontal lines */
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px),
+        /* Dots at intersections */
+        radial-gradient(circle at center,
+            var(--grid-color) calc(var(--dot-size) / 2),
+            transparent calc(var(--dot-size) / 2));
+    background-size:
+        var(--grid-size) var(--grid-size),
+        var(--grid-size) var(--grid-size),
+        var(--grid-size) var(--grid-size);
+    background-position:
+        0 0,
+        0 0,
+        0 0;
+
+    font-size: 16px;
+
+}
